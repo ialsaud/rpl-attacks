@@ -19,7 +19,7 @@ Available Malicious mote types :
 
  */
 
-{
+ {
   /*
    All simulations will have the same topology with 10 motes of platform Z1, spread in an square of 200m side, with
     a communication range of 50m
@@ -67,6 +67,18 @@ Available Malicious mote types :
     },
     "malicious": {
       "building-blocks": ["decreased-rank"] // "drop-messages" still missing...
+    }
+  },
+  "wormhole-attack": {
+    "simulation": {
+      "title": "Wormhole Attack",
+      "goal": "Demonstrate that this attack impacts the DODAG by creating a back looping channel between two malicious nodes.",
+      "notes": "With the modified RPL configuration constant, one malicious node will forward packets to another malicious node farther from the root, causing children nodes to consume more energy.",
+      "root": "echo",
+      "sensor": "echo"
+    },
+    "malicious": {
+      "building-blocks": ["wormhole-attack"] 
     }
   }
 }
