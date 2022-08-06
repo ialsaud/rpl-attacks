@@ -48,3 +48,4 @@ Building blocks consist of either ContikiRPL configuration constants or single-l
       ["&server_ipaddr, UIP_HTONS(UDP_SERVER_PORT));", ""]
     ]
   }
+}
