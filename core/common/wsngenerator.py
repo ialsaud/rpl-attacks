@@ -8,6 +8,7 @@ WSN_DENSITY_FACTOR = 3
 __all__ = [
     'quadrants',
     'grid',
+    'tree',
 ]
 
 
@@ -155,6 +156,64 @@ def grid(**kwargs):
                 y += uniform(-1, 1) * inc * .1
                 motes.append({'id': node_id, 'type': "sensor", 'x': x, 'y': y, 'z': 0})
                 node_id += 1
+    # finally, add the malicious mote in the middle of the network
+    motes.append(_malicious())
+    return sorted(motes, key=lambda o: o['id'])
+
+def tree(**kwargs):
+    """
+    This function generates positions according to a complete binary tree, defining square "layers" below the root mote.
+    Inherits code from previous functions.
+
+    :return: the list of motes (formatted as dictionaries like hereafter)
+    """
+    global min_range, motes
+    defaults = kwargs.pop('defaults')
+    n = kwargs.pop('n', defaults["number-motes"])
+    side = defaults["area-square-side"]
+    min_range = kwargs.pop('min_range', defaults["minimum-distance-from-root"])
+    max_range = kwargs.pop('max_range', side // 2)
+    tx_range = kwargs.pop('tx_range', defaults["transmission-range"])
+    # determine 'l', the number of layers for the algorithm
+    l, s = 1, n
+    while s > 1:
+        s -= 2**l
+        l += 1
+    # now get the distance increment
+    yinc = side / (l+1) # vertical 
+    xinc = {} # horizantal per layer
+    for v in range(2, l+1):
+        xinc[v] = ((side*1.0)/((2**v)+1))
+
+    yiter = 1
+    # place root on top of the plane
+    motes = [{'id': 0, 'type': "root", 'x': -20, 'y': yinc*(((l+1)/2.0) - yiter), 'z': 0}]
+    yiter +=1
+
+    # then generate the positions
+    node_id = 1
+    for v in range(2, l+1): # vertical iteration
+        if node_id > n:
+            break
+
+        xiter = 1
+        for h in range(1,(2**(v-1))+1): # horizontal iteration depends on layer
+            if node_id > n:
+                break
+
+            x = xinc[v] * ( (v*1.0)/2.0 - xiter)
+            y = yinc*(((l+1)/2.0) - yiter)
+
+            xiter += 1
+
+            x += uniform(-1, 1) * .1
+            y += uniform(-1, 1) * .1
+
+            motes.append({'id': node_id, 'type': "sensor", 'x': x, 'y': y, 'z': 0})
+            node_id += 1
+
+        yiter += 1
+
     # finally, add the malicious mote in the middle of the network
     motes.append(_malicious())
     return sorted(motes, key=lambda o: o['id'])
