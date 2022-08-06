@@ -1,6 +1,7 @@
 # -*- coding: utf8 -*-
 from numpy import arccos, average, cos, pi, sign, sin, sqrt
 from random import randint, shuffle, uniform
+import math
 
 WSN_DENSITY_FACTOR = 3
 
@@ -9,6 +10,7 @@ __all__ = [
     'quadrants',
     'grid',
     'tree',
+    'star',
 ]
 
 
@@ -213,6 +215,45 @@ def tree(**kwargs):
             node_id += 1
 
         yiter += 1
+
+    # finally, add the malicious mote in the middle of the network
+    motes.append(_malicious())
+    return sorted(motes, key=lambda o: o['id'])
+
+def star(**kwargs):
+    """
+    This function generates positions as a star/circle around the root.
+    Inherits code from previous functions.
+
+    :return: the list of motes (formatted as dictionaries like hereafter)
+    """
+    global min_range, motes
+    defaults = kwargs.pop('defaults')
+    n = kwargs.pop('n', defaults["number-motes"])
+    side = defaults["area-square-side"]
+    min_range = kwargs.pop('min_range', defaults["minimum-distance-from-root"])
+    max_range = kwargs.pop('max_range', side // 2)
+    tx_range = kwargs.pop('tx_range', defaults["transmission-range"])
+
+    # circle info
+    r = side/4 #radius
+    c1 = 2*math.pi #circumf
+    angle = c1/n
+    # place root in center
+    motes = [{'id': 0, 'type': "root", 'x': 0, 'y': 0, 'z': 0}]
+    # then generate the positions
+    node_id = 1
+
+    point=0
+    while point < c1:
+        if node_id > n:
+            break
+        x = math.cos(point)*r
+        y = math.sin(point)*r
+
+        motes.append({'id': node_id, 'type': "sensor", 'x': x, 'y': y, 'z': 0})
+        node_id += 1
+        point += angle
 
     # finally, add the malicious mote in the middle of the network
     motes.append(_malicious())
