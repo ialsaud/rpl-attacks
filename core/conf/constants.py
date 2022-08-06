@@ -56,6 +56,7 @@ PIDFILE = '/tmp/rpla.pid'
 # This is used for copying a minimal part of Contiki to an experiment folder for compiling custom malicious mote.
 CONTIKI_FILES = [
     "core",
+    "examples", # NEW
     "dev/{}",
     "platform/{}",
     "cpu/{}",
@@ -96,15 +97,15 @@ MIN_DIST_BETWEEN_MOTES = 20.0
 MAX_DIST_BETWEEN_MOTES = 50.0
 DEFAULTS = {
     "area-square-side": 200.0,
-    "building-blocks": [],
-    "duration": 600,
+    "building-blocks": [u'hello-flood'],
+    "duration": 250,
     "external-library": None,
     "goal": "",
     "transmission-range": MAX_DIST_BETWEEN_MOTES,
     "interference-range": None,  # set to 2 * transmission_range at parameter validation
     "minimum-distance-from-root": MIN_DIST_BETWEEN_MOTES,
     "notes": "",
-    "number-motes": 10,
+    "number-motes": 20,
     "repeat": 1,
     "target": "z1",
     "malicious-target": None,
