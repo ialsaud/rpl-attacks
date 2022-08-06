@@ -23,7 +23,7 @@ Building blocks consist of either ContikiRPL configuration constants or single-l
   "hello-flood": {
     "RPL_CONF_DIS_INTERVAL": 0,
     "RPL_CONF_DIS_START_DELAY": 0,
-    "rpl-timers.c": ["next_dis++;", "next_dis++; int i=0; while (i<20) {i++; dis_output(NULL);}"]
+    "rpl-timers.c": ["next_dis++;", "next_dis++; int i=0; while (i<10) {i++; dis_output(NULL);}"]
   },
   "increased-version": {
     "rpl-icmp6.c": ["dag->version;", "dag->version++;"]
@@ -51,6 +51,13 @@ Building blocks consist of either ContikiRPL configuration constants or single-l
   "increased-rank": {
     "rpl-icmp6.c": [
       ["set16(buffer, pos, dag->rank);", "set16(buffer, pos, dag->rank*7);"]
+    ]
+  },
+  "dio-flood": {
+    "RPL_CONF_DIO_INTERVAL_MIN": 1,
+    "rpl-timers.c": [
+      ["ticks = (time * CLOCK_SECOND) / 1000;", "ticks = (time * CLOCK_SECOND) / (1000*1000);"],
+      ["dio_output(instance, NULL);", "int i=0; while (i<10) {i++; dio_output(instance, NULL);}"]
     ]
   }
 }
