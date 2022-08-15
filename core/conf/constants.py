@@ -97,7 +97,7 @@ MIN_DIST_BETWEEN_MOTES = 20.0
 MAX_DIST_BETWEEN_MOTES = 50.0
 DEFAULTS = {
     "area-square-side": 200.0,
-    "building-blocks": [u'hello-flood'],
+    "building-blocks": [u'dio-flood'],
     "duration": 250,
     "external-library": None,
     "goal": "",
@@ -105,7 +105,7 @@ DEFAULTS = {
     "interference-range": None,  # set to 2 * transmission_range at parameter validation
     "minimum-distance-from-root": MIN_DIST_BETWEEN_MOTES,
     "notes": "",
-    "number-motes": 20,
+    "number-motes": 9,
     "repeat": 1,
     "target": "z1",
     "malicious-target": None,
@@ -114,7 +114,7 @@ DEFAULTS = {
     "sensor": "dummy",
     "type": "sensor",
     "debug": True,
-    "wsn-generation-algorithm": "quadrants",
+    "wsn-generation-algorithm": "star",
 }
 
 # Note: Cooja simulation file must be the last key in the following ordered dictionary

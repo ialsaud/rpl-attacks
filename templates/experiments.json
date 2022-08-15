@@ -1,43 +1,24 @@
-/*
-
-Available Building Blocks :
-{{ available_building_blocks }}
-
-Available Root mote types :
-{{ available_root_mote_types }}
-
-Available Sensor mote types :
-{{ available_sensor_mote_types }}
-
-Available Malicious mote types :
-{{ available_malicious_mote_types }}
-
- */
-
 {
-  /*
-   All simulations will have the same topology with 10 motes of platform Z1, spread in an square of {{ area_side }}m side, with
-    a communication range of {{ tx_range }}m and will last 120 seconds.
-   */
   "BASE": {
     "simulation": {
-      "number-motes": 10,
+      "goal": "introduction to wormhole attack",
+      "number-motes": 20,
       "target": "z1",
-      "duration": 120,
-      "wsn-generation-algorithm": "quadrants"
+      "duration": 120
     }
   },
-  "test": {
+  "wormhole-attack": {
     "simulation": {
-      "title": "Test simulation",
-      "goal": "Create a new simulation",
-      "root": "echo"
+      "title": "Wormhole Attack",
+      "goal": "wormhole attack goal",
+      "notes": "wormhole notes",
+      "comment-1": "wormhole comments 1",
+      "comment-2": "wormhole comments 2",
+      "root": "echo",
+      "sensor": "echo"
     },
     "malicious": {
-      "type": "sensor",
-      "building-blocks": [
-        "hello-flood"
-      ]
+      "building-blocks": ["wormhole-rank"] 
     }
   }
 }
