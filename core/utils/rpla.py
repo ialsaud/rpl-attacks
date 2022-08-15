@@ -341,7 +341,7 @@ def render_campaign(exp_file):
                    available_building_blocks='\n'.join([' - {}'.format(b) for b in get_building_blocks()]),
                    available_root_mote_types='\n'.join(list_of('root')),
                    available_sensor_mote_types='\n'.join(list_of('sensor')),
-                   available_malicious_mote_type='\n'.join(list_of('malicious', 'type')),
+                   available_malicious_mote_types='\n'.join(list_of('malicious', 'type')),
                    area_side=DEFAULTS["area-square-side"], tx_range=DEFAULTS["transmission-range"])
     rename(join(path, 'experiments.json'), exp_file)
 
@@ -496,8 +496,8 @@ def validated_parameters(dictionary):
                                        lambda x: isinstance(x, (int, float)) and x > params["min_range"],
                                        "is not an integer greater than {}".format(params["min_range"]))
     params["int_range"] = get_parameter(dictionary, "simulation", "interference-range",
-                                        lambda x: isinstance(x, (int, float)) and x >= params["tx_range"],
-                                        "is not an integer greater than or equal to {}".format(params["tx_range"]),
+                                        lambda x: isinstance(x, (int, float)) and x >= 0,
+                                        "is not an integer greater than or equal to 0",
                                         default=2*params["tx_range"])
     params["area_side"] = get_parameter(dictionary, "simulation", "area-square-side",
                                         lambda x: isinstance(x, (int, float)) and x >= sqrt(2.0) * params["min_range"],
