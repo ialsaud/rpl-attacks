@@ -1,4 +1,4 @@
-<h1 align="center">The Project is a [Fork](https://github.com/dhondta/rpl-attacks): Contributing to Project</h1>
+The Project is a [Fork](https://github.com/dhondta/rpl-attacks): Contributing to Original Project by [Alex](https://github.com/dhondta)
 
 <p align="center"><img src="https://github.com/dhondta/rpl-attacks/raw/master/doc/imgs/logo.png"></p>
 <h1 align="center">RPL Attacks Framework <a href="https://twitter.com/intent/tweet?text=RPL%20Attacks%20Framework%20-%20Framework%20for%20simulating%20WSN%20with%20a%20malicious%20mote%20based%20on%20Contiki%20for%20attacking%20the%20RPL%20protocol.%0D%0Ahttps%3a%2f%2fgithub%2ecom%2fdhondta%2frpl-attacks%0D%0A&hashtags=python,simulation,framework,contiki,rpl,wsn,sensors"><img src="https://img.shields.io/badge/Tweet--lightgrey?logo=twitter&style=social" alt="Tweet" height="20"/></a></h1>
@@ -158,11 +158,3 @@ For contributions or suggestions, please [open an Issue](https://github.com/dhon
 
 If you want to build new RPL attacks, please refer to the [*How to make new building blocks ?*](https://github.com/dhondta/rpl-attacks/blob/master/doc/building-blocks.md) section. In this case, please submit your new attack through a Pull Request.
 
-
-## :clap:  Supporters
-
-[![Stargazers repo roster for @dhondta/rpl-attacks](https://reporoster.com/stars/dark/dhondta/rpl-attacks)](https://github.com/dhondta/rpl-attacks/stargazers)
-
-[![Forkers repo roster for @dhondta/rpl-attacks](https://reporoster.com/forks/dark/dhondta/rpl-attacks)](https://github.com/dhondta/rpl-attacks/network/members)
-
-<p align="center"><a href="#"><img src="https://img.shields.io/badge/Back%20to%20top--lightgrey?style=social" alt="Back to top" height="20"/></a></p>
